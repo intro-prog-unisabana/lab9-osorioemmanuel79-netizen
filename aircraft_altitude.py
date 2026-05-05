@@ -7,15 +7,16 @@ def main():
     while True:
         command = input("Enter command (A for ascent, D for descent, X to exit):")
 
-        if command == "X":
+        if command.strip() == "X":
             break
 
-        parts = command.split()
+        parts = command.strip().split()
 
         if len(parts) != 2:
             continue
 
         action, value = parts
+
         try:
             feet = int(value)
         except:
