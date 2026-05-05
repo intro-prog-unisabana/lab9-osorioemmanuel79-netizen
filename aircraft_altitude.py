@@ -11,6 +11,10 @@ def main():
             break
 
         parts = command.split()
+
+        if len(parts) != 2:
+            continue
+
         action = parts[0]
         feet = int(parts[1])
 
