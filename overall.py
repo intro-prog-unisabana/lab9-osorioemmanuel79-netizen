@@ -1,6 +1,7 @@
-# TODO: Import modules
+from car_utils import create_car_from_input, display_cars
+
 def main():
-    cars = {}  # Dictionary to store cars with car_id as key and car objects as values
+    car_dict = {}
 
     while True:
         print("\nMenu:")
@@ -10,30 +11,34 @@ def main():
         print("4. Paint a car")
         print("5. Exit")
 
-        choice = input("Choose an option:\n")
+        option = input("Choose an option:\n")
 
-        if choice == '1':
-          """TODO: Call the appropriate function from utils.py to create 
-          the car, add it to the dictionary, and print the car."""
+        if option == "1":
+            car = create_car_from_input()
+            car_dict[car.car_id] = car
 
+        elif option == "2":
+            display_cars(car_dict)
 
-        elif choice == '2':
-          """TODO: Call the appropriate function from utils.py to display
-          all the cars in the cars dictionary."""
+        elif option == "3":
+            car_id = input("Enter the car ID to drive:\n")
+            if car_id in car_dict:
+                miles = float(input("How many miles to drive?\n"))
+                car_dict[car_id].drive(miles)
+                print("Mileage updated.")
+            else:
+                print("Car not found.")
 
-        elif choice == '3':
-          car_id = input("Enter the car ID to drive:\n")
-          miles = float(input("How many miles to drive?\n"))
-          """TODO: Look up the car in the dictionary, call the appropriate
-          class method to increase the mileage of the car, and print the car."""
-          
-        elif choice == '4':
-          car_id = input("Enter the car ID to paint:\n")
-          new_color = input("Enter the new color:\n")
-          """TODO: Look up the car in the dictionary, call the appropriate
-          class method to change the color of the car, and print the car."""
+        elif option == "4":
+            car_id = input("Enter the car ID to paint:\n")
+            if car_id in car_dict:
+                color = input("Enter the new color:\n")
+                car_dict[car_id].change_color(color)
+                print("Color updated.")
+            else:
+                print("Car not found.")
 
-        elif choice == '5':
+        elif option == "5":
             print("Goodbye!")
             break
 
@@ -42,4 +47,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
