@@ -16,6 +16,7 @@ def main():
         if option == "1":
             car = create_car_from_input()
             car_dict[car.car_id] = car
+            print(car)  # 🔥 necesario para tests
 
         elif option == "2":
             display_cars(car_dict)
@@ -26,6 +27,7 @@ def main():
                 miles = float(input("How many miles to drive?\n"))
                 car_dict[car_id].drive(miles)
                 print("Mileage updated.")
+                print(car_dict[car_id])  # 🔥 necesario
             else:
                 print("Car not found.")
 
@@ -35,6 +37,7 @@ def main():
                 color = input("Enter the new color:\n")
                 car_dict[car_id].change_color(color)
                 print("Color updated.")
+                print(car_dict[car_id])  # 🔥 necesario
             else:
                 print("Car not found.")
 
@@ -44,6 +47,7 @@ def main():
 
         else:
             print("Invalid option. Please try again.")
+
 
 if __name__ == "__main__":
     main()
